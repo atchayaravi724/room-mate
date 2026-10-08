@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RoomMate - Shared Room Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div>
+            <p class="tag">SHARED LIVING</p>
+
+            <h1>RoomMate 🏠</h1>
+
+            <p class="subtitle">
+                Share tasks. Share responsibility. Keep the room happy.
+            </p>
+        </div>
+
+        <div class="room-status">
+            🟢 Room Active
+        </div>
+
+    </header>
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+            <div class="icon">🧹</div>
+            <div>
+                <p>Total Tasks</p>
+                <h2 id="totalTasks">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="icon">✅</div>
+            <div>
+                <p>Completed</p>
+                <h2 id="completedTasks">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="icon">⏳</div>
+            <div>
+                <p>Pending</p>
+                <h2 id="pendingTasks">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="icon">⭐</div>
+            <div>
+                <p>Total Points</p>
+                <h2 id="totalPoints">0</h2>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- MAIN GRID -->
+
+    <div class="main-grid">
+
+
+        <!-- ADD TASK -->
+
+        <section class="card-box">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Add New Task</h2>
+                    <p>Create a responsibility for the room.</p>
+                </div>
+
+                <span>➕</span>
+
+            </div>
+
+
+            <form id="taskForm">
+
+                <label>Task Name</label>
+
+                <input
+                    type="text"
+                    id="taskName"
+                    placeholder="Example: Clean the room"
+                    required
+                >
+
+
+                <label>Category</label>
+
+                <select id="taskCategory">
+
+                    <option value="Cleaning">🧹 Cleaning</option>
+
+                    <option value="Kitchen">🍳 Kitchen</option>
+
+                    <option value="Shopping">🛒 Shopping</option>
+
+                    <option value="Laundry">👕 Laundry</option>
+
+                    <option value="Bills">💳 Bills</option>
+
+                    <option value="Other">📦 Other</option>
+
+                </select>
+
+
+                <label>Assign To</label>
+
+                <select id="assignedTo"></select>
+
+
+                <label>Due Date</label>
+
+                <input
+                    type="date"
+                    id="dueDate"
+                    required
+                >
+
+
+                <button class="add-task" type="submit">
+
+                    + Add Task
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+
+        <!-- ROOMMATES -->
+
+        <section class="card-box">
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Roommates</h2>
+                    <p>People sharing this room.</p>
+                </div>
+
+                <span>👥</span>
+
+            </div>
+
+
+            <div class="add-member">
+
+                <input
+                    type="text"
+                    id="memberName"
+                    placeholder="Enter roommate name"
+                >
+
+                <button onclick="addMember()">
+                    Add
+                </button>
+
+            </div>
+
+
+            <div id="membersList"></div>
+
+        </section>
+
+    </div>
+
+
+
+    <!-- TASK SECTION -->
+
+    <section class="card-box tasks-box">
+
+        <div class="section-title">
+
+            <div>
+
+                <h2>Room Tasks</h2>
+
+                <p>
+                    Keep track of everyone's responsibilities.
+                </p>
+
+            </div>
+
+            <button
+                class="clear-btn"
+                onclick="clearCompleted()">
+
+                Clear Completed
+
+            </button>
+
+        </div>
+
+
+        <div class="filters">
+
+            <button
+                class="filter active"
+                onclick="filterTasks('all', this)">
+
+                All
+
+            </button>
+
+            <button
+                class="filter"
+                onclick="filterTasks('pending', this)">
+
+                Pending
+
+            </button>
+
+            <button
+                class="filter"
+                onclick="filterTasks('completed', this)">
+
+                Completed
+
+            </button>
+
+        </div>
+
+
+        <div id="taskList"></div>
+
+    </section>
+
+
+
+    <!-- LEADERBOARD -->
+
+    <section class="card-box leaderboard">
+
+        <div class="section-title">
+
+            <div>
+
+                <h2>Room Leaderboard 🏆</h2>
+
+                <p>
+                    Who is doing the most?
+                </p>
+
+            </div>
+
+            <span>⭐</span>
+
+        </div>
+
+
+        <div id="leaderboardList"></div>
+
+    </section>
+
+
+
+    <footer>
+
+        RoomMate • Built with HTML, CSS & JavaScript ❤️
+
+    </footer>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
